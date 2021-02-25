@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__logo">News in EJS</div>
+      <div class="header__search"><%- include('./Partials/search.ejs') %></div>
+    </header>
+    <div class="wrapper">
+      <div class="news">
+        <% if(items !== null){ %> <% items.forEach(function(item) { %>
+        <div class="news__card">
+          <img src="<%- item.urlToImage %> " />
+          <h5><%- item.source.name %></h5>
+          <h2><%- item.title %></h2>
+          <p><%- item.description %></p>
+          <h4>
+            <a href="<%- item.url%>" target="_blank">
+              Click Here to read the complete News
+            </a>
+          </h4>
+          <h5 style="position: absolute; bottom: 0; right: 0; font-weight: 100">
+            Published at <%- item.publishedAt %>
+          </h5>
+        </div>
+        <% }) %> <% } else { %>
+        <h1>No news Found</h1>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- 
+{
+  "source": {
+      "id": null,
+      "name": "Moneycontrol"
+  },
+  "author": null,
+  "title": "Market LIVE Updates: Sensex gains 400 pts, Nifty above 15,100 led by metal, pharma, PSU bank - Moneycontrol.com",
+  "description": "All the sectoral indices trading in the green with PSU Bank, IT and metal indices rose 1-2 percent.",
+  "url": "https://www.moneycontrol.com/news/business/markets/share-market-live-updates-stock-market-today-february-25-latest-news-bse-nse-sensex-nifty-affle-india-pnb-gilts-dredging-corporation-of-india-monte-carlo-fashionsnurecaheranba-industriesmtar-tec-6569261.html",
+  "urlToImage": "https://images.moneycontrol.com/static-mcnews/2020/01/BSE_Sensex_Stocks_market-770x433.png",
+  "publishedAt": "2021-02-25T04:37:00Z",
+}, -->
